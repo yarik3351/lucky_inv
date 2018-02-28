@@ -1,0 +1,72 @@
+<%= form_with(model: invoice, local: true) do |form| %>
+  <% if invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+      <% invoice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :customer_id %>
+    <%= form.number_field :customer_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :saved_user %>
+    <%= form.text_area :saved_user %>
+  </div>
+
+  <div class="field">
+    <%= form.label :saved_customer %>
+    <%= form.text_area :saved_customer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :saved_bank_credentials %>
+    <%= form.text_area :saved_bank_credentials %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Invoice.statuses.keys.map { |w| [w.humanize, w]} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :currency %>
+    <%= form.select :currency, Invoice.currencies.keys.to_a %>
+  </div>
+
+  <div class="field">
+    <%= form.label :items %>
+    <%= form.text_field :items %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

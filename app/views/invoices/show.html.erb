@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @invoice.number %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @invoice.date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @invoice.user_id %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @invoice.customer_id %>
+</p>
+
+<p>
+  <strong>Saved user:</strong>
+  <%= @invoice.saved_user %>
+</p>
+
+<p>
+  <strong>Saved customer:</strong>
+  <%= @invoice.saved_customer %>
+</p>
+
+<p>
+  <strong>Saved bank credentials:</strong>
+  <%= @invoice.saved_bank_credentials %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @invoice.status %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @invoice.amount %>
+</p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @invoice.currency %>
+</p>
+
+<p>
+  <strong>Items:</strong>
+  <%= @invoice.items %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>
