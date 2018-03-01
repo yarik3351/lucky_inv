@@ -6,14 +6,12 @@ class Invoice < ApplicationRecord
   enum currency: {USD: 'USD', EUR: 'EUR', RUB: 'RUB', UAH: 'UAH'}
 
 def set_defaults
-  self.number  ||= Date.today.strftime("%d %m %y").gsub(/\s+/, "").to_s + '-' + (Invoice.last.id + 1).to_s
-  #self.currency ||= Invoice.currencies.keys[0]
-  #self.status ||= Invoice.statuses.keys[0]
+    self.number  ||= Date.today.strftime("%d %m %y").gsub(/\s+/, "").to_s + '-' + (Invoice.last.id + 1).to_s
 end
 
 belongs_to :user
 belongs_to :customer
-    validates :name, presence: true
+    #validates :name, presence: true
 self.per_page = 10
 
 end
