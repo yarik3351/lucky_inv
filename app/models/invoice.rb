@@ -6,7 +6,7 @@ class Invoice < ApplicationRecord
   enum currency: {USD: 'USD', EUR: 'EUR', RUB: 'RUB', UAH: 'UAH'}
 
 def set_defaults
-    self.number  ||= Date.today.strftime("%d %m %y").gsub(/\s+/, "").to_s + '-' + (Invoice.last.id + 1).to_s
+    self.number  ||= Date.today.strftime("%d %m %y").gsub(/\s+/, "").to_s + '-' + (Invoice.last.id + 1).to_s unless Invoice.last.id.blank?
 end
 
 belongs_to :user
