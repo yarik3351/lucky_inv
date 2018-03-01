@@ -21,22 +21,24 @@ class InvoicesController < ApplicationController
   end
 
   # GET /invoices/new
+  # GET /invoices/new.json (last invoice)
   def new
-    @invoice = Invoice.new
-    # respond_to do |format|
-    #   if @invoice.update(invoice_params)
-    #     format.html { redirect_to @last_invoice }
-    #     format.json { render :show, status: :ok, location: @last_invoice }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @invoice.errors, status: :unprocessable_entity }
-    #   end
-    #end
+    @invoice = Invoice.new(@last_invoice.attributes.except('number'))
+    respond_to do |format|
+        format.html {}
+        format.json { render json: @last_invoice, status: :ok, location: @last_invoice }
+      end
 
   end
 
   # GET /invoices/1/edit
+  # GET /invoices/1/edit.json (current invoice)
   def edit
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @invoice, status: :ok, location: @invoice }
+    end
+
   end
 
   # POST /invoices
