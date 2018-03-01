@@ -6,13 +6,8 @@ class Invoice < ApplicationRecord
   enum currency: {USD: 'USD', EUR: 'EUR', RUB: 'RUB', UAH: 'UAH'}
 
 def set_defaults
-  if Invoice.last.nil?
-    id = ActiveRecord::Base.connection.execute("select last_value from users_id_seq").first["last_value"]
-  else
-    id = Invoice.maximum(:id)+1
-  end
-  Invoice.hash
-    self.number  ||= Date.today.strftime("%d %m %y").gsub(/\s+/, "").to_s + '-' + ( id + 1).to_s
+  id = Invoice.connection.execute("select last_value from invoices_id_seq").first["last_value"]
+    self.number  ||= Date.today.strftime("%d %m %y").gsub(/\s+/, "").to_s + '-' + ( id ).to_s
 end
 
 belongs_to :user

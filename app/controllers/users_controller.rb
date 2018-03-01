@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :check_authentication
-  before_action :check_admin
-
-  def check_authentication
-    redirect_to login_path unless logged_in?
-  end
-  def check_admin
-    redirect_to root_path unless current_user
-  end
+  # before_action :check_authentication
+  # before_action :check_admin
+  #
+  # def check_authentication
+  #   redirect_to login_path unless logged_in?
+  # end
+  # def check_admin
+  #   redirect_to root_path unless current_user.admin?
+  # end
 
   # GET /users
   # GET /users.json

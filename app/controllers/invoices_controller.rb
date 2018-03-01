@@ -1,10 +1,11 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
-  before_action :check_authentication
-
-  def check_authentication
-    redirect_to login_path unless logged_in?
-  end
+  before_action :last_invoice, only: [:new]
+  # before_action :check_authentication
+  #
+  # def check_authentication
+  #   redirect_to login_path unless logged_in?
+  # end
 
   # GET /invoices
   # GET /invoices.json
@@ -19,9 +20,19 @@ class InvoicesController < ApplicationController
   def show
   end
 
-  # GET /invoices/login
+  # GET /invoices/new
   def new
     @invoice = Invoice.new
+    # respond_to do |format|
+    #   if @invoice.update(invoice_params)
+    #     format.html { redirect_to @last_invoice }
+    #     format.json { render :show, status: :ok, location: @last_invoice }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @invoice.errors, status: :unprocessable_entity }
+    #   end
+    #end
+
   end
 
   # GET /invoices/1/edit
@@ -73,7 +84,9 @@ class InvoicesController < ApplicationController
     def set_invoice
       @invoice = Invoice.find(params[:id])
     end
-
+    def last_invoice
+      @last_invoice = Invoice.last
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
       params.require(:invoice).permit(:number, :date, :user_id,
