@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/flash_message' %>
 
 <h1>Invoices</h1>
 
@@ -26,7 +26,10 @@
     <% end %>
   </tbody>
 </table>
+<%= link_to 'New Invoice', new_invoice_path %>
 
 <br>
+<br>
+<br>
 
-<%= link_to 'New Invoice', new_invoice_path %>
+<%= will_paginate @invoices %>

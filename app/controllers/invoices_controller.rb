@@ -1,10 +1,17 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :check_authentication
+
+  def check_authentication
+    redirect_to login_path unless logged_in?
+  end
 
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all
+    #@invoices = Invoice.all#Invoice.search(params[:term], params[:page])
+    # @invoices = Invoice.paginate(:page => params[:page]).order('id DESC')
+    @invoices = Invoice.page(params[:page]).order('id DESC')
   end
 
   # GET /invoices/1
@@ -12,7 +19,7 @@ class InvoicesController < ApplicationController
   def show
   end
 
-  # GET /invoices/new
+  # GET /invoices/login
   def new
     @invoice = Invoice.new
   end

@@ -7,6 +7,9 @@ ruby '2.5.0'
 gem 'rails', '~> 5.2.0.rc1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
+group :production do
+  gem 'pg', '>= 0.18', '< 2.0'
+end
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -26,10 +29,12 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
 gem 'validates_email_format_of'
 
 gem "jsonb_accessor", "~> 1.0.0"
 
+gem 'will_paginate', '~> 3.1.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

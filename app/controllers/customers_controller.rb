@@ -1,5 +1,10 @@
 class CustomersController < ApplicationController
-  before_action :logged_in?, :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :check_authentication
+
+  def check_authentication
+    redirect_to login_path unless logged_in?
+  end
 
   # GET /customers
   # GET /customers.json
@@ -12,7 +17,7 @@ class CustomersController < ApplicationController
   def show
   end
 
-  # GET /customers/new
+  # GET /customers/login
   def new
     @customer = Customer.new
   end
