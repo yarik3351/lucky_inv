@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_02_27_151242) do
+ActiveRecord::Schema.define(version: 2018_03_01_104000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 2018_02_27_151242) do
     t.text "saved_user"
     t.text "saved_customer"
     t.text "saved_bank_credentials"
-    t.string "status", default: "fresh"
+    t.string "status"
     t.decimal "amount", precision: 9, scale: 2
-    t.string "currency", default: "USD"
+    t.string "currency"
     t.jsonb "items"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
