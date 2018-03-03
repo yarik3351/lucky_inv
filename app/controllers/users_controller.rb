@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  # before_action :check_authentication
-  # before_action :check_admin
-  #
-  # def check_authentication
-  #   redirect_to login_path unless logged_in?
-  # end
-  # def check_admin
-  #   redirect_to root_path unless current_user.admin?
-  # end
+  before_action :check_authentication
+  before_action :check_admin
+
+  def check_authentication
+    redirect_to login_path unless logged_in?
+  end
+  def check_admin
+    redirect_to root_path unless current_user.admin?
+  end
 
   # GET /users
   # GET /users.json
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_url, notice: 'User was successfully updated.' }
+        format.html { redirect_to users_url, notice: 'User was successfully updated.'}
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

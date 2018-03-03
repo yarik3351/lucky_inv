@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 2018_03_01_104000) do
     t.text "saved_user"
     t.text "saved_customer"
     t.text "saved_bank_credentials"
-    t.string "status"
+    t.string "status", default: "fresh"
     t.decimal "amount", precision: 9, scale: 2
-    t.string "currency"
+    t.string "currency", default: "USD"
     t.jsonb "items"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

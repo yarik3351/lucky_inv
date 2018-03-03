@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'invoices#index'
   get '/login' => 'sessions#login'
   get '/logout' => 'sessions#logout'
+  delete '/logout' => 'sessions#logout'
   post '/login' => 'sessions#create'
 
   resources :customers

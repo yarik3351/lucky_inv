@@ -1,11 +1,11 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
   before_action :last_invoice, only: [:new]
-  # before_action :check_authentication
-  #
-  # def check_authentication
-  #   redirect_to login_path unless logged_in?
-  # end
+  before_action :check_authentication
+
+  def check_authentication
+    redirect_to login_path unless logged_in?
+  end
 
   # GET /invoices
   # GET /invoices.json

@@ -1,7 +1,7 @@
 <%= render 'layouts/flash_message' %>
 <h1>Вход</h1>
 
-<%= form_with(url: "/login", method: :post, local: true) do |form| %>
+<%= form_for(:session, url: login_path) do |form| %>
 
   <div class="field">
     <%= form.label :email%>

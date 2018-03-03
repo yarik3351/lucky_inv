@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       flash[:danger] = 'Wrong email or password.'
       redirect_to login_path
     end
+    puts
   end
 
   def logout
