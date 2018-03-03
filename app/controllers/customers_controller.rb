@@ -1,10 +1,10 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :check_authentication
-
-  def check_authentication
-    redirect_to login_path unless logged_in?
-  end
+  # before_action :check_authentication
+  #
+  # def check_authentication
+  #   redirect_to login_path unless logged_in?
+  # end
 
   # GET /customers
   # GET /customers.json

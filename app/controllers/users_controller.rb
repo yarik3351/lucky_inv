@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
-  before_action :check_authentication
-  before_action :check_admin
-
-  def check_authentication
-    redirect_to login_path unless logged_in?
-  end
-  def check_admin
-    redirect_to root_path, :flash => { :danger => 'You dont belong there!' } unless admin?
-  end
+  # before_action :check_authentication
+  # before_action :check_admin
+  #
+  # def check_authentication
+  #   redirect_to login_path unless logged_in?
+  # end
+  # def check_admin
+  #   redirect_to root_path, :flash => { :danger => 'You dont belong there!' } unless admin?
+  # end
 
   # GET /users
   # GET /users.json
