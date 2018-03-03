@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy]
   before_action :check_authentication
   before_action :check_admin
 
@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     redirect_to login_path unless logged_in?
   end
   def check_admin
-    redirect_to root_path unless current_user.admin?
+    redirect_to root_path, :flash => { :danger => 'You dont belong there!' } unless admin?
   end
 
   # GET /users
@@ -20,8 +20,9 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     respond_to do |format|
-      format.html {redirect_to @users}
-      format.json {}
+      # format.html {redirect_to users_path}
+      format.json {@user = User.find(params[:id])
+      redirect_to users_path}
     end
   end
 

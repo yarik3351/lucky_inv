@@ -4,8 +4,8 @@
 <%= form_for(:session, url: login_path) do |form| %>
 
   <div class="field">
-    <%= form.label :email%>
-    <%= form.text_field :email %>
+    <%= form.label :email %>
+    <%= form.email_field :email, value:  @saved_email%>
   </div>
 
   <div class="field">
@@ -13,7 +13,7 @@
     <%= form.password_field :password %>
   </div>
 
-  <div class="actions">
+  <div class="actions ajax-load">
     <%= form.submit 'Вход' %>
   </div>
 <% end %>

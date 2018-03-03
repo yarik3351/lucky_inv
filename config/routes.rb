@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
 
   resources :customers
-  resources :users
+  resources :users, except: [:show]
+  get 'users/:id' => 'users#show', defaults: { format: 'json' }
   resources :invoices
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

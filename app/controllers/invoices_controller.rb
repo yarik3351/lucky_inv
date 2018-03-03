@@ -23,7 +23,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/new
   # GET /invoices/new.json (last invoice)
   def new
-    @invoice = Invoice.new(@last_invoice.attributes.except('number'))
+    @invoice = @last_invoice ? Invoice.new(@last_invoice.attributes.except('number')) : Invoice.new
     respond_to do |format|
         format.html {}
         format.json { render json: @last_invoice, status: :ok, location: @last_invoice }
