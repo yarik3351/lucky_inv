@@ -17,8 +17,8 @@
     <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.name %></td>
-        <td><%= customer.email %></td>
-        <td><%= customer.details %></td>
+        <td><%=link_to  customer.invoices.last.id.to_s , customer.invoices.last if customer.invoices.exists? %></td>
+        <td><%= customer.invoices.count %></td>
         <td><%= link_to 'Show', customer %>
         <%= link_to 'Edit', edit_customer_path(customer) %>
         <%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>

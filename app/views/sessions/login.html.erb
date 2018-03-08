@@ -1,21 +1,80 @@
-<%= render 'layouts/flash_message' %>
-<h1>Вход</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<%= form_for(:session, url: login_path) do |form| %>
+  <meta charset="utf-8">
+  <meta name="description" content="SimpliQ Bootstrap 4 Admin Template">
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.email_field :email, value:  @saved_email%>
+  <title>LuckyInv</title>
+  <%= csrf_meta_tags %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <!-- Icons -->
+  <link href="/assets/login/font-awesome.min.css" rel="stylesheet">
+  <link href="/assets/login/simple-line-icons.min.css" rel="stylesheet">
+
+  <!-- Main styles for this application -->
+  <link href="/assets/login/style.css" rel="stylesheet">
+
+  <!-- Styles required by this views -->
+</head>
+
+<body class="app flex-row align-items-center">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card-group">
+        <div class="card p-4">
+          <div class="card-body">
+            <%= render 'flash_message' %>
+            <%= form_for(:session, url: login_path) do |form| %>
+            <h1>Вход</h1>
+            <p class="text-muted">Вход в ваш аккаунт</p>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="icon-user"></i></span>
+              </div>
+              <div class="field">
+                <%= form.label :email, class: 'text-muted ' %>
+                <%= form.email_field :email, value:  @saved_email, class: 'form-control', placeholders: 'email'%>
+              </div>
+              <!--<input type="email" class="form-control" placeholder="email">-->
+            </div>
+            <div class="input-group mb-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="icon-lock"></i></span>
+              </div>
+              <div class="field">
+                <%= form.label :password, class: 'text-muted' %>
+                <%= form.password_field :password, class: "form-control", placeholder: 'password' %>
+              </div>
+              <!--<input type="password" class="form-control" placeholder="Password">-->
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="actions ajax-load">
+                  <%= form.submit 'Вход', class: "btn btn-primary px-4" %>
+                </div>
+                <!--<button type="button" class="btn btn-primary px-4">Login</button>-->
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
+<!-- Bootstrap and necessary plugins -->
+<script src="/assets/login/js/jquery.min.js"></script>
+<script src="/assets/login/js/popper.min.js"></script>
+<script src="/assets/login/js/bootstrap.min.js"></script>
 
-  <div class="actions ajax-load">
-    <%= form.submit 'Вход' %>
-  </div>
-<% end %>
+</body>
+</html>
+
+
 
 

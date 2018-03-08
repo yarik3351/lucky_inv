@@ -8,6 +8,7 @@
       <th>No</th>
       <th>Supplier</th>
       <th>Customer</th>
+      <th>Status</th>
       <th>Actions</th>
       <th colspan="3"></th>
     </tr>
@@ -19,9 +20,10 @@
         <td><%= invoice.number %></td>
         <td><%= invoice.user_id %></td>
         <td><%= invoice.customer_id %></td>
+        <td><%= invoice.status %></td>
         <td><%= link_to 'Show', invoice %>
         <%= link_to 'Edit', edit_invoice_path(invoice) %>
-        <%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= link_to 'Delete', invoice, method: :delete, data: { confirm: 'Are you sure?' } if invoice.status == 'fresh'%></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,5 +33,6 @@
 <br>
 <br>
 <br>
-
-<%= will_paginate @invoices %>
+<div class="apple_pagination">
+  <%= will_paginate @invoices, :container => false %>
+</div>

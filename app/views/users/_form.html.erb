@@ -1,75 +1,105 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+<div class="card">
+  <%= form_with(model: user, local: true, enctype:"multipart/form-data", id: 'edit-form', class:"form-horizontal", html: { autocomplete: "off" }) do |form| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password %>
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="card-header">
+    <strong>Editing User</strong>
   </div>
+  <div class="card-body">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">Email</label>
+        <div class="col-md-9">
+          <%= form.text_field :email, id: "text-input", class: "form-control", placeholder: "Email" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">Password</label>
+        <div class="col-md-9">
+          <%= form.text_field :password, id: "text-input", class: "form-control", placeholder: "Password" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">Name</label>
+        <div class="col-md-9">
+          <%= form.text_field :name, id: "text-input", class: "form-control", placeholder: "Name" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">Name_uk</label>
+        <div class="col-md-9">
+          <%= form.text_field :name_uk, id: "text-input", class: "form-control", placeholder: "Name_uk" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">Address</label>
+        <div class="col-md-9">
+          <%= form.text_field :address, id: "text-input", class: "form-control", placeholder: "Address" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">Address_uk</label>
+        <div class="col-md-9">
+          <%= form.text_field :address_uk, id: "text-input", class: "form-control", placeholder: "Address_uk" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">Phone</label>
+        <div class="col-md-9">
+          <%= form.text_field :phone, id: "text-input", class: "form-control", placeholder: "Phone" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">Bank Credentials for USD</label>
+        <div class="col-md-9">
+          <%= form.text_field :bank_credentials, id: "text-input", class: "form-control", placeholder: "USD" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">Bank Credentials for EUR</label>
+        <div class="col-md-9">
+          <%= form.text_field :bank_credentials, id: "text-input", class: "form-control", placeholder: "EUR" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">Bank Credentials for RUB</label>
+        <div class="col-md-9">
+          <%= form.text_field :bank_credentials, id: "text-input", class: "form-control", placeholder: "RUB" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="text-input">Bank Credentials for UAH</label>
+        <div class="col-md-9">
+          <%= form.text_field :bank_credentials, id: "text-input", class: "form-control", placeholder: "UAH" %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name_uk %>
-    <%= form.text_field :name_uk %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address_uk %>
-    <%= form.text_field :address_uk %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bank_credentials %>
-    <%= form.text_field :bank_credentials %>
-  </div>
-  <div class="field">
-    <%= form.label :bank_credentials %>
-    <%= form.text_field :bank_credentials %>
-  </div>
-  <div class="field">
-    <%= form.label :bank_credentials %>
-    <%= form.text_field :bank_credentials %>
-  </div>
-  <div class="field">
-    <%= form.label :bank_credentials %>
-    <%= form.text_field :bank_credentials %>
-  </div>
-
-  <div class="field">
-    <%= form.label :admin %>
-    <%= form.check_box :admin %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label">Admin</label>
+        <div class="col-md-9 col-form-label">
+          <div class="form-check form-check-inline mr-1">
+            <%= form.check_box :admin, class: "form-check-input", type: "checkbox", id: "inline-checkbox3" %>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <%= form.submit class: "btn btn-sm btn-primary"%>
+        <%= button_tag(type: 'button', class: "btn btn-sm btn-primary") do
+          link_to 'Back', users_path, class: "btn-sm btn-primary"
+        end %>
+      </div>
   </div>
 
 <% end %>
+</div>
+

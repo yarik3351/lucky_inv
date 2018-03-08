@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+  layout false
   def create
 
     @saved_email = params[:session][:email]
@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       log_in @user
       respond_to do |format|
         format.html { @user if @user}
+        format.json { render json: @user if @user}
       end
       redirect_to root_path
     else
@@ -17,18 +18,7 @@ class SessionsController < ApplicationController
       flash.now[:danger] = 'Invalid email/password combination'
       render 'login'
     end
-    end
-  # def create
-  #   @user = User.find_by_email(params[:email])
-  #
-  #   if @user && @user.authenticate(params[:password])
-  #     session[:user_id] = @user.id
-  #     redirect_to root_path
-  #   else
-  #     flash[:danger] = 'Wrong email or password.'
-  #     redirect_to login_path
-  #   end
-  # end
+  end
 
   def login
   end

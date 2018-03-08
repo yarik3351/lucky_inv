@@ -10,9 +10,13 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    #@invoices = Invoice.all#Invoice.search(params[:term], params[:page])
-    # @invoices = Invoice.paginate(:page => params[:page]).order('id DESC')
-    @invoices = Invoice.page(params[:page]).order('id DESC')
+    if current_user&.admin?
+      @invoices = Invoice.page(params[:page]).order('id DESC')
+    elsif current_user
+      @invoices = current_user.invoices.page(params[:page]).order('id DESC')
+    else
+      redirect_to login_path
+    end
   end
 
   # GET /invoices/1
@@ -74,10 +78,18 @@ class InvoicesController < ApplicationController
   # DELETE /invoices/1
   # DELETE /invoices/1.json
   def destroy
-    @invoice.destroy
-    respond_to do |format|
-      format.html { redirect_to invoices_url, notice: 'Invoice was successfully destroyed.' }
-      format.json { head :no_content }
+    if @invoice.status == 'fresh'
+      @invoice.destroy
+      respond_to do |format|
+        format.html { redirect_to invoices_url, notice: 'Invoice was successfully destroyed.'}
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to invoices_url
+                      flash[:danger] =  'You can delete only fresh invoices.'}
+        format.json {render nothing: true}
+    end
     end
   end
 

@@ -30,4 +30,23 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+ helpers:
+    submit:
+      # This will be the default ones, will take effect if no other
+      # are specifically defined for the models.
+      create: "Create {{model}}"
+      update: "Update {{model}}"
+
+      # Those will however take effect for all the other models below
+      # for which we define a specific label.
+      user:
+        create: "Create User"
+        update: "Update User"
+      customer:
+        create: "Create Customer"
+        update: "Update Customer"
+      invoice:
+        create: "Create Invoice"
+        update: "Update Invoice"
+      session:
+        create: "Log in"
